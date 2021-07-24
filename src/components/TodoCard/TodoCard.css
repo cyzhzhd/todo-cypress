@@ -7,3 +7,6 @@
   align-items: center;
   justify-content: center;
 }
+.done {
+  background-color: gray;
+}

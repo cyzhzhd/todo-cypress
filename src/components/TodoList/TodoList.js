@@ -2,6 +2,11 @@ import TodoCard from '../TodoCard/TodoCard';
 import './TodoList.css';
 
 const TodoList = (props) => {
+  const toggleDone = (index) => {
+    const newTodos = [...props.todos];
+    newTodos[index].done = !newTodos[index].done;
+    props.setTodos(newTodos);
+  };
   const removeItem = (index) => {
     const newTodos = [...props.todos];
     newTodos.splice(index, 1);
@@ -13,7 +18,8 @@ const TodoList = (props) => {
       {props.todos.map((todo, index) => {
         return (
           <div className='todo-card-wrapper'>
-            <TodoCard name={todo} />
+            <TodoCard name={todo.name} done={todo.done} />
+            <button onClick={() => toggleDone(index)}>done</button>
             <button onClick={() => removeItem(index)}>X</button>
           </div>
         );

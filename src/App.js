@@ -2,13 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import TodoList from './components/TodoList/TodoList';
 
-
 function App() {
   const [input, setInput] = useState('');
-  const [todos, setTodos] = useState(['양치', '설겆이', '장보기']);
+  const [todos, setTodos] = useState([]);
 
   const addTodo = () => {
-    setTodos([...todos, input]);
+    setTodos([...todos, { name: input, done: false }]);
     setInput('');
   };
 
