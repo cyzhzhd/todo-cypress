@@ -16,6 +16,9 @@ const TodoList = (props) => {
   return (
     <div className='todo-list'>
       {props.todos.map((todo, index) => {
+        if (props.filtered && todo.done) {
+          return false;
+        }
         return (
           <div className='todo-card-wrapper'>
             <TodoCard name={todo.name} done={todo.done} />
