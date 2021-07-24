@@ -1,5 +1,6 @@
 .todo-card-wrapper {
   margin: 10px;
+  display: flex;
 }
 
 .todo-list {
