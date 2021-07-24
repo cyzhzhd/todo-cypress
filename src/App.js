@@ -3,8 +3,9 @@ import './App.css';
 import TodoList from './components/TodoList/TodoList';
 
 function App() {
-  const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
+  const [filtered, setFiltered] = useState(false);
 
   const addTodo = () => {
     setTodos([...todos, { name: input, done: false }]);
@@ -25,9 +26,18 @@ function App() {
         </div>
       </div>
 
+      <div className='filter'>
+        <input
+          type='checkbox'
+          checked={filtered}
+          onChange={() => setFiltered(!filtered)}
+        />
+        <div>끝나지 않은 목록만 보기</div>
+      </div>
+
       <div>
         <div>할일 목록</div>
-        <TodoList todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} filtered={filtered} />
       </div>
     </div>
   );
