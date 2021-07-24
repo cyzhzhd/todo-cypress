@@ -1,0 +1,9 @@
+.todo-card-wrapper {
+  margin: 10px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
