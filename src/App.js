@@ -32,6 +32,7 @@ function App() {
           type='checkbox'
           checked={filtered}
           onChange={() => setFiltered(!filtered)}
+          data-testid='8063f8c0-ecfb-11eb-9a03-0242ac130003'
         />
         <div>끝나지 않은 목록만 보기</div>
       </div>

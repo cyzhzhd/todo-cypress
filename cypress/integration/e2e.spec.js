@@ -55,5 +55,38 @@ describe('todo app', () => {
         });
       });
     });
+    it('successfully display only todos which is not completed', () => {
+      cy.fixture('todos').then((todos) => {
+        const onGoingTodos = [];
+        const completedTodos = [];
+        todos.forEach((todo, index) => {
+          if (index % 2 === 0) {
+            cy.getByTestId(`8063f6ae-ecfb-11eb-9a03-0242ac130003${todo}`)
+              .contains('done')
+              .click();
+
+            cy.getByTestId(`8063f6ae-ecfb-11eb-9a03-0242ac130003${todo}`)
+              .find('div')
+              .should('have.class', 'done');
+            completedTodos.push(todo);
+          } else {
+            onGoingTodos.push(todo);
+          }
+        });
+
+        cy.getByTestId('8063f8c0-ecfb-11eb-9a03-0242ac130003').click();
+
+        onGoingTodos.forEach((todo) => {
+          cy.getByTestId('8063f5be-ecfb-11eb-9a03-0242ac130003')
+            .contains(todo)
+            .should('exist');
+        });
+        completedTodos.forEach((todo) => {
+          cy.getByTestId('8063f5be-ecfb-11eb-9a03-0242ac130003')
+            .contains(todo)
+            .should('not.exist');
+        });
+      });
+    });
   });
 });
