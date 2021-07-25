@@ -7,7 +7,8 @@ function App() {
   const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState(false);
 
-  const addTodo = () => {
+  const addTodo = (e) => {
+    e.preventDefault();
     setTodos([...todos, { name: input, done: false }]);
     setInput('');
   };
@@ -16,14 +17,14 @@ function App() {
     <div className='App'>
       <div>
         <div>무슨 일을 해야할까요?</div>
-        <div>
+        <form data-testid='8063f348-ecfb-11eb-9a03-0242ac130003'>
           <input
             value={input}
             type='input'
             onChange={(e) => setInput(e.target.value)}
           />
           <button onClick={addTodo}>추가</button>
-        </div>
+        </form>
       </div>
 
       <div className='filter'>
